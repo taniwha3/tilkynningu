@@ -1,0 +1,32 @@
+[package]
+name = "tilkynningu"
+version = "0.1.0"
+authors = ["Tani Aura <111664369+taniwha3@users.noreply.github.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["console_error_panic_hook"]
+
+[dependencies]
+cfg-if = "0.1.2"
+worker = "0.0.9"
+worker-sys = "0.0.4"
+serde = "1.0.136"
+serde_json = "1.0.67"
+sha2 = "0.10.2"
+hmac = "0.12.1"
+hex = "0.4.3"
+
+
+# The `console_error_panic_hook` crate provides better debugging of panics by
+# logging them with `console.error`. This is great for development, but requires
+# all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
+# code size when deploying.
+console_error_panic_hook = { version = "0.1.1", optional = true }
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"
